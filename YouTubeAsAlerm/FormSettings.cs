@@ -244,5 +244,10 @@ namespace YouTubeAsAlerm
 
             Process.Start("https://youtube.com/watch?v=" + GridPlaylistItems.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            Visible = true;
+        }
     }
 }
