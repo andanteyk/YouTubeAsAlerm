@@ -113,7 +113,7 @@ namespace YouTubeAsAlerm
 
             if (e.ColumnIndex == 1)
             {
-                bool isNewColumn = Settings.Alerms.Count >= e.RowIndex;
+                bool isNewColumn = e.RowIndex >= Settings.Alerms.Count;
 
                 if (Playlists == null)
                 {
@@ -227,7 +227,9 @@ namespace YouTubeAsAlerm
 
 
                 //MessageBox.Show("https://youtube.com/watch?v=" + item.Snippet.ResourceId.VideoId);
+                AlermTimer.Stop();
                 Process.Start("https://youtube.com/watch?v=" + item.Snippet.ResourceId.VideoId);
+                AlermTimer.Start();
 
                 break;
             }
@@ -235,5 +237,12 @@ namespace YouTubeAsAlerm
             PreviousTick = current;
         }
 
+        private void GridPlaylistItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((uint)e.RowIndex >= GridPlaylistItems.RowCount)
+                return;
+
+            Process.Start("https://youtube.com/watch?v=" + GridPlaylistItems.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
     }
 }

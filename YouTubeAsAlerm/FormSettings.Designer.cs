@@ -120,6 +120,7 @@ namespace YouTubeAsAlerm
             this.GridPlaylistItems.RowTemplate.Height = 21;
             this.GridPlaylistItems.Size = new System.Drawing.Size(909, 483);
             this.GridPlaylistItems.TabIndex = 1;
+            this.GridPlaylistItems.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridPlaylistItems_CellContentDoubleClick);
             // 
             // Column_Id
             // 
